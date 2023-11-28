@@ -1,8 +1,8 @@
-import { Inter } from 'next/font/google'
+import { Montserrat } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/lib/providers'
 
-const inter = Inter({ subsets: ['latin'] })
+const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata = {
     title: 'Brest Bar',
@@ -13,7 +13,10 @@ export default function RootLayout({ children }) {
     return (
         <Providers>
             <html lang="fr">
-                <body className={inter.className}>{children}</body>
+                <head>
+                    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
+                </head>
+                <body className={montserrat.className}>{children}</body>
             </html>
         </Providers>
     )

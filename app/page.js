@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Header from './components/Header/Header';
 import LeftPanel from './components/LeftPanel/LeftPanel';
+import MapContainer from './components/Map/MapContainer';
 
 export default function Home() {
 
@@ -19,7 +20,7 @@ export default function Home() {
         <div className='min-h-screen max-h-screen flex flex-col overflow-hidden'>
             <Header />
             <LeftPanel />
-
+            <MapContainer />
         </div>
     )
 }

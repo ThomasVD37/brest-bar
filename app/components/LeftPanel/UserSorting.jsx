@@ -20,19 +20,19 @@ const UserSorting = () => {
     <div className="flex justify-between gap-4 text-sm items-start">
         <button onClick={() => handlefilter('breton')} className="w-full">
             <div className="aspect-square flex items-center justify-center bg-gray-700 rounded">
-                <Image src="/bretagne.png" width={40} height={40} alt="Breton" />
+                <Image src="/bzh.png" width={50} height={50} alt="Breton" />
             </div>
-            <p className="mt-2">Breton</p>
+            <p className="mt-2">BZH</p>
         </button>
         <button onClick={() => handlefilter('student')} className="w-full">
             <div className="aspect-square flex items-center justify-center bg-gray-700 rounded">
-                <Image src="/student.png" width={40} height={40} alt="Etudiant" />
+                <Image src="/party.png" width={50} height={50} alt="Etudiant" />
             </div>
             <p className="mt-2">Etudiant</p>
         </button>
         <button onClick={() => handlefilter('adventure')} className="w-full">
             <div className="aspect-square flex items-center justify-center bg-gray-700 rounded">
-                <Image src="/adventure.png" width={40} height={40} alt="Aventurier" />
+                <Image src="/question-mark.png" width={50} height={50} alt="Aventurier" />
             </div>
             <p className="mt-2">Aventurier</p>
         </button>
