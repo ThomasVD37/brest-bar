@@ -1,4 +1,4 @@
-import { selectBars } from '@/lib/redux';
+import { selectCurrentBars } from '@/lib/redux';
 import Image from 'next/image';
 import ReactMapboxGl, { Marker, Cluster } from 'react-mapbox-gl';
 import { useSelector } from 'react-redux';
@@ -14,7 +14,7 @@ const MapContainer = () => {
     );
 
 
-    const bars = useSelector(selectBars);
+    const bars = useSelector(selectCurrentBars);
 
     const Map = ReactMapboxGl({
         accessToken:
@@ -22,7 +22,7 @@ const MapContainer = () => {
     });
 
     return (
-        <div className="absolute top-0 left-0 w-screen h-screen z-0">
+        <div className="absolute top-0 left-0 w-screen h-screen z-0 bg-gray-800">
             <Map
                 style="mapbox://styles/mapbox/dark-v11"
                 containerStyle={{
