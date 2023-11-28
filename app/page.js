@@ -16,11 +16,10 @@ export default function Home() {
     })
 
     return (
-        <div className='min-h-screen max-h-screen overflow-hidden'>
+        <div className='min-h-screen max-h-screen flex flex-col overflow-hidden'>
             <Header />
-            <main className='relative z-10 min-h-full'>
-                <LeftPanel />
-            </main>
+            <LeftPanel />
+
         </div>
     )
 }

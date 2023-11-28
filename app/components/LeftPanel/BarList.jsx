@@ -1,13 +1,14 @@
-import { selectBars } from "@/lib/redux";
+import { selectBars, selectFilter } from "@/lib/redux";
 import { filterBars } from "@/lib/utils";
 import { useSelector } from "react-redux";
-import BarItem from "./BarItem/BarItem";
+import BarItem from "./BarItem";
 
-const BarList = ({ sorting }) => {
+const BarList = () => {
 
     const bars = useSelector(selectBars);
+    const currentFilter = useSelector(selectFilter);
 
-    const filteredBars = filterBars(bars, sorting);
+    const filteredBars = filterBars(bars, currentFilter);
 
     return (
         <div>
