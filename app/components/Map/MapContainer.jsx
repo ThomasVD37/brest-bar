@@ -29,8 +29,8 @@ const MapContainer = () => {
                     height: '100vh',
                     width: '100vw'
                 }}
-                zoom={[11]}
-                center={[-4.48, 48.40]}
+                zoom={[12]}
+                center={[-4.54, 48.40]}
             >
                 <Cluster ClusterMarkerFactory={clusterMarker}>
                     {
