@@ -1,15 +1,26 @@
 import { selectCurrentBars } from '@/lib/redux';
+import clsx from 'clsx';
 import Image from 'next/image';
 import ReactMapboxGl, { Marker, Cluster } from 'react-mapbox-gl';
 import { useSelector } from 'react-redux';
 
 const MapContainer = () => {
 
+    //TODO : PRIORITY : add zoom onclick on the cluster
+    //TODO : Move "zoom" and "center" to redux store to make possible the click on a bar in the list and zoom on it
+    //TODO : Add the popup on the marker with the bar atributes
+    // Fonction onclick dans le marker qui appelle un composant Popup sur ses coordonnées
 
     const clusterMarker = (coordinates, pointCount) => (
 
         <Marker coordinates={coordinates} key={[...coordinates]}>
-            <div className="bg-sky-700 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs">{pointCount}</div>
+            <div className={clsx(
+                "rounded-full flex items-center justify-center text-white font-bold text-xs",
+                {
+                    "bg-sky-500 w-8 h-8 ": pointCount <= 10,
+                    "bg-sky-800 w-12 h-12": pointCount > 10,
+                })
+                }>{pointCount}</div>
         </Marker>
     );
 

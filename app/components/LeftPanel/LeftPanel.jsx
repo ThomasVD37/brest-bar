@@ -4,9 +4,11 @@ import UserSorting from "./UserSorting";
 import clsx from "clsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import SortingHint from "./sortingHint";
+import SortingHint from "./SortingHint";
 
 const LeftPanel = () => {
+
+    //TODO : Rework hidePanel feature to make it cleaner
 
     const [hidePanel, setHidePanel] = useState(false);
 
@@ -21,8 +23,8 @@ const LeftPanel = () => {
                 "-translate-x-3/4": hidePanel,
             })}
         >
-            <div className="flex justify-between p-4">
-                <h2 className="font-bold text-2xl xl:text-3xl">Trouver le bar qu&#39;il vous faut <span className="text-sky-500">selon votre humeur</span></h2>
+            <div className={clsx("flex p-4", {"justify-end": hidePanel})}>
+                <h2 className={clsx("font-bold text-2xl xl:text-3xl", {"hidden": hidePanel})}>Trouver le bar qu&#39;il vous faut <span className="text-sky-500">selon votre humeur</span></h2>
                 <button aria-label="toggle panel" onClick={handleclick}><FontAwesomeIcon className={clsx(
                     "w-8 h-8 ml-8 flex items-center justify-center text-white font-bold p-1 transition-transform duration-300",
                     {
@@ -30,12 +32,12 @@ const LeftPanel = () => {
                     })
                 } icon={faChevronLeft} /></button>
             </div>
-            <div className="p-4">
+            <div className={clsx("p-4", {"hidden": hidePanel})}>
                 <h3 className="text-white font-bold text-lg pb-2">Vous êtes plutôt ?</h3>
                 <UserSorting />
                 <SortingHint />
             </div>
-            <div className="p-4">
+            <div className={clsx("p-4", {"hidden": hidePanel})}>
                 <h3 className="text-white font-bold text-lg pb-4">Explorer</h3>
                 <BarList />
             </div>

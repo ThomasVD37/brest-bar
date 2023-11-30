@@ -1,21 +1,14 @@
-import { selectBars, selectFilter, setCurrentBars } from "@/lib/redux";
-import { filterBars } from "@/lib/utils";
-import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentBars } from "@/lib/redux";
+import { useSelector } from "react-redux";
 import BarItem from "./BarItem";
 
 const BarList = () => {
 
-    const bars = useSelector(selectBars);
-    const currentFilter = useSelector(selectFilter);
-    
-    const filteredBars = filterBars(bars, currentFilter);
-
-    const dispatch = useDispatch();
-    dispatch(setCurrentBars(filteredBars));
+    const bars = useSelector(selectCurrentBars);
 
     return (
         <div>
-        {filteredBars.map(({ id, ...rest}) => (
+        {bars.map(({ id, ...rest}) => (
             <BarItem key={id} {...rest}/>
         ))}
         </div>
