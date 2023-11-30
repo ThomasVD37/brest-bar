@@ -13,9 +13,9 @@ const SortingHint = () => {
                 "hidden": currentFilter === 'none',
             })
             }>
-            {currentFilter === 'student' && <p>"C'est cliché tout de même l'ouverture le jeudi"</p>}
-            {currentFilter === 'adventure' && <p>"Les avis google, c'est surfait"</p>}
-            {currentFilter === 'breton' && <p>"Pas de département Breton dans le numéro ? Non merci."</p>}
+            {currentFilter === 'student' && <p>&#34;C&#39;est cliché tout de même l&#39;ouverture le jeudi&#34;</p>}
+            {currentFilter === 'adventure' && <p>&#34;Les avis google, c&#39;est surfait&#34;</p>}
+            {currentFilter === 'breton' && <p>&#34;Pas de département Breton dans le numéro ? Non merci.&#34;</p>}
         </div>
     )
 }
