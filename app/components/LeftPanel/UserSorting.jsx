@@ -1,5 +1,5 @@
 
-import { selectBars, selectFilter, setCurrentBars, setFilter } from "@/lib/redux";
+import { selectBars, selectFilter, setCurrentBars, setFilter, setPopupInvisible } from "@/lib/redux";
 import { filterBars } from "@/lib/utils";
 import clsx from "clsx";
 import Image from "next/image";
@@ -14,9 +14,11 @@ const UserSorting = () => {
     const handlefilter = (filter) => {
         if (filter === currentFilter) {
             dispatch(setFilter('none'));
+            dispatch(setPopupInvisible());
             dispatch(setCurrentBars(filterBars(bars, 'none')));
         } else {
             dispatch(setFilter(filter));
+            dispatch(setPopupInvisible());
             dispatch(setCurrentBars(filterBars(bars, filter)));
         }
     }
