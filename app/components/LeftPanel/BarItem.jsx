@@ -36,7 +36,7 @@ const BarItem = ({ name, address, formatted_phone_number, website, rating, user_
     }
 
     return (
-        <div className="bg-gray-700 rounded mb-4 p-4 flex justify-between items-center">
+        <div className="bg-gray-700 rounded mb-4 p-4 flex justify-between items-center min-w-full">
             <div className="w-2/3 mr-2">
                 <h4 className="font-bold text-xl text-yellow-400 mb-2">{name}</h4>
                 {hours &&

@@ -1,6 +1,6 @@
 
 import { selectBars, selectFilter, setCurrentBars, setFilter, setPopupInvisible } from "@/lib/redux";
-import { filterBars } from "@/lib/utils";
+import { filterBars } from "@/lib/utils/filterBars";
 import clsx from "clsx";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
