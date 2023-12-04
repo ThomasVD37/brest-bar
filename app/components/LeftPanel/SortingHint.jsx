@@ -8,7 +8,7 @@ const SortingHint = () => {
 
     return (
         <div className={clsx(
-            "flex justify-center p-4 bg-gray-700 italic rounded text-sm mt-4 mx-4",
+            "flex justify-center p-4 bg-gray-700 italic rounded text-sm mt-4 mx-4 text-center",
             {
                 "hidden": currentFilter === 'none',
             })

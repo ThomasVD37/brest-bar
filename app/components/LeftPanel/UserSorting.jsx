@@ -25,7 +25,7 @@ const UserSorting = () => {
 
     return (
             <div className="flex justify-between gap-8 text-sm items-start">
-                <button onClick={() => handlefilter('breton')} className="w-full focus:text-sky-500">
+                <button onClick={() => handlefilter('breton')} className="w-full">
                     <div className={clsx(
                         "aspect-square flex items-center justify-center rounded",
                         {

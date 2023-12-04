@@ -9,6 +9,7 @@ import SortingHint from "./SortingHint";
 const LeftPanel = () => {
 
     //TODO : Rework hidePanel feature to make it cleaner
+    //TODO : refactor general code and comment
 
     const [hidePanel, setHidePanel] = useState(false);
 
@@ -38,7 +39,6 @@ const LeftPanel = () => {
                 <SortingHint />
             </div>
             <div className={clsx("p-4", {"hidden": hidePanel})}>
-                <h3 className="text-white font-bold text-lg pb-4">Explorer</h3>
                 <BarList />
             </div>
         </section>
