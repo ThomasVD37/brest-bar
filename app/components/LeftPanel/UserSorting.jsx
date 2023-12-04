@@ -27,7 +27,7 @@ const UserSorting = () => {
             <div className="flex justify-between gap-8 text-sm items-start">
                 <button onClick={() => handlefilter('breton')} className="w-full">
                     <div className={clsx(
-                        "aspect-square flex items-center justify-center rounded",
+                        "aspect-square flex items-center justify-center rounded hover:bg-sky-900 transition-all duration-300",
                         {
                             "bg-gray-600 border-2 border-sky-500": currentFilter === 'breton',
                             "bg-gray-700": currentFilter !== 'breton',
@@ -39,7 +39,7 @@ const UserSorting = () => {
                 </button>
                 <button onClick={() => handlefilter('student')} className="w-full">
                     <div className={clsx(
-                        "aspect-square flex items-center justify-center rounded",
+                        "aspect-square flex items-center justify-center rounded hover:bg-sky-900 transition-all duration-300",
                         {
                             "bg-gray-600 border-2 border-sky-500": currentFilter === 'student',
                             "bg-gray-700": currentFilter !== 'student',
@@ -51,7 +51,7 @@ const UserSorting = () => {
                 </button>
                 <button onClick={() => handlefilter('adventure')} className="w-full">
                     <div className={clsx(
-                        "aspect-square flex items-center justify-center rounded",
+                        "aspect-square flex items-center justify-center rounded hover:bg-sky-900 transition-all duration-300",
                         {
                             "bg-gray-600 border-2 border-sky-500": currentFilter === 'adventure',
                             "bg-gray-700": currentFilter !== 'adventure',

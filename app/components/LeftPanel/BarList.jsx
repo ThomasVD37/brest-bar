@@ -45,28 +45,8 @@ const BarList = () => {
             <div className="flex justify-between pb-4 items-center">
                 <h3 className="text-white font-bold text-lg">Explorer</h3>
                 <div className="flex gap-2">
-                    <div onClick={() => handleSort("starsAsc")}
-                        className={clsx("p-2 rounded flex items-center gap-2 border-2",
-                            {
-                                "border-sky-500 bg-gray-600": currentSorting === "starsAsc",
-                                "bg-gray-700 border-gray-800": currentSorting !== "starsAsc",
-                            })
-                        }>
-                        <FontAwesomeIcon icon={faUpLong} />
-                        <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
-                    </div>
-                    <div onClick={() => handleSort("starsDesc")}
-                        className={clsx("p-2 rounded flex items-center gap-2 border-2",
-                            {
-                                "border-sky-500 bg-gray-600": currentSorting === "starsDesc",
-                                "bg-gray-700 border-gray-800": currentSorting !== "starsDesc",
-                            })
-                        }>
-                        <FontAwesomeIcon icon={faDownLong} />
-                        <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
-                    </div>
-                    <div onClick={() => handleSort("ratingsAsc")}
-                        className={clsx("p-2 rounded flex items-center gap-2 border-2",
+                <div onClick={() => handleSort("ratingsAsc")}
+                        className={clsx("p-2 rounded flex items-center gap-2 border-2 hover:bg-sky-900 transition-all duration-300 cursor-pointer",
                             {
                                 "border-sky-500 bg-gray-600": currentSorting === "ratingsAsc",
                                 "bg-gray-700 border-gray-800": currentSorting !== "ratingsAsc",
@@ -76,7 +56,7 @@ const BarList = () => {
                         <FontAwesomeIcon icon={faPen} className="text-black" />
                     </div>
                     <div onClick={() => handleSort("ratingsDesc")}
-                        className={clsx("p-2 rounded flex items-center gap-2 border-2",
+                        className={clsx("p-2 rounded flex items-center gap-2 border-2 hover:bg-sky-900 transition-all duration-300 cursor-pointer",
                             {
                                 "border-sky-500 bg-gray-600": currentSorting === "ratingsDesc",
                                 "bg-gray-700 border-gray-800": currentSorting !== "ratingsDesc",
@@ -85,6 +65,26 @@ const BarList = () => {
                         <FontAwesomeIcon icon={faDownLong} />
                         <FontAwesomeIcon icon={faPen} className="text-black" />
                     </div>
+                    <div onClick={() => handleSort("starsAsc")}
+                        className={clsx("p-2 rounded flex items-center gap-2 border-2 hover:bg-sky-900 transition-all duration-300 cursor-pointer",
+                            {
+                                "border-sky-500 bg-gray-600": currentSorting === "starsAsc",
+                                "bg-gray-700 border-gray-800": currentSorting !== "starsAsc",
+                            })
+                        }>
+                        <FontAwesomeIcon icon={faUpLong} />
+                        <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
+                    </div>
+                    <div onClick={() => handleSort("starsDesc")}
+                        className={clsx("p-2 rounded flex items-center gap-2 border-2 hover:bg-sky-900 transition-all duration-300 cursor-pointer",
+                            {
+                                "border-sky-500 bg-gray-600": currentSorting === "starsDesc",
+                                "bg-gray-700 border-gray-800": currentSorting !== "starsDesc",
+                            })
+                        }>
+                        <FontAwesomeIcon icon={faDownLong} />
+                        <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
+                    </div>
                 </div>
             </div>
             <div className="flex flex-col items-center">
@@ -92,7 +92,7 @@ const BarList = () => {
                     <BarItem key={id} {...rest} />
                 ))}
                 {numberOfBars > barsToDisplay &&
-                    <button onClick={displayMoreResults} className="bg-gray-600 px-4 py-2 rounded cursor-pointer">Voir plus</button>
+                    <button onClick={displayMoreResults} className="bg-gray-600 px-4 py-2 rounded cursor-pointer hover:bg-sky-900 transition-all duration-300">Voir plus</button>
                 }
             </div>
         </>
