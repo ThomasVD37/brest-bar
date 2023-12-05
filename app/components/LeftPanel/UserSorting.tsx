@@ -25,7 +25,7 @@ const UserSorting = () => {
     }
 
     return (
-            <div className="flex justify-between gap-8 text-sm items-start">
+            <div className="flex justify-between gap-4 sm:gap-8 text-sm items-start">
                 <button onClick={() => handlefilter('breton')} className="w-full">
                     <div className={clsx(
                         "aspect-square flex items-center justify-center rounded hover:bg-sky-900 transition-all duration-300",
@@ -34,7 +34,8 @@ const UserSorting = () => {
                             "bg-gray-700": currentFilter !== 'breton',
                         })
                     }>
-                        <Image src="/bzh.png" width={60} height={60} alt="Breton" />
+                        <Image src="/bzh.png" width={60} height={60} alt="Breton" className="hidden sm:block"/>
+                        <Image src="/bzh.png" width={40} height={40} alt="Breton" className="block sm:hidden"/>
                     </div>
                     <p className="mt-2 ">BZH</p>
                 </button>
@@ -46,7 +47,8 @@ const UserSorting = () => {
                             "bg-gray-700": currentFilter !== 'student',
                         })
                     }>
-                        <Image src="/party.png" width={60} height={60} alt="Etudiant" />
+                        <Image src="/party.png" width={60} height={60} alt="Etudiant" className="hidden sm:block"/>
+                        <Image src="/party.png" width={40} height={40} alt="Etudiant" className="block sm:hidden"/>
                     </div>
                     <p className="mt-2">Etudiant</p>
                 </button>
@@ -58,7 +60,8 @@ const UserSorting = () => {
                             "bg-gray-700": currentFilter !== 'adventure',
                         })
                     }>
-                        <Image src="/question-mark.png" width={60} height={60} alt="Aventurier" />
+                        <Image src="/question-mark.png" width={60} height={60} alt="Aventurier" className="hidden sm:block"/>
+                        <Image src="/question-mark.png" width={40} height={40} alt="Aventurier" className="block sm:hidden"/>
                     </div>
                     <p className="mt-2">Aventurier</p>
                 </button>

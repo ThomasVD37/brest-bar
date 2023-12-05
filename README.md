@@ -15,9 +15,9 @@ Petit projet réalisé dans le cadre d’une offre d’emploi.
 
 ## Les evolutions à venir très prochainement
 
-- Gestion des erreurs
 - Amélioration du design et du responsive + refacto & cleanup
 - Hebergement sur un autre nom de domaine
+- ~~Gestion des erreurs~~
 - ~~Support de TypeScript~~
 - ~~Ajout des filtres et des horaires en toggle avec highlight du current day~~
 - ~~Load de quelques résultats puis chargement des suivant sur interraction utilisateur~~

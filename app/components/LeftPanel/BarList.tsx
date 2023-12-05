@@ -1,4 +1,4 @@
-import { selectCurrentBars, selectFilter, selectSorting, setSorting } from "@/lib/redux";
+import { selectCurrentBars, selectError, selectFilter, selectSorting, setSorting } from "@/lib/redux";
 import { useDispatch, useSelector } from "react-redux";
 
 import { useState } from "react";
@@ -19,6 +19,8 @@ const BarList = () => {
     const currentFilter = useSelector(selectFilter);
     const currentSorting = useSelector(selectSorting);
     const dispatch = useDispatch();
+
+    const errorState = useSelector(selectError)
 
     const numberOfBars = bars.length;
     const [barsToDisplay, setBarsToDisplay] = useState(5);
@@ -50,7 +52,7 @@ const BarList = () => {
             <div className="flex justify-between pb-4 items-center">
                 <h3 className="text-white font-bold text-lg">Explorer</h3>
                 <div className="flex gap-2">
-                <div onClick={() => handleSort("ratingsAsc")}
+                    <div onClick={() => handleSort("ratingsAsc")}
                         className={clsx("p-2 rounded flex items-center gap-2 border-2 hover:bg-sky-900 transition-all duration-300 cursor-pointer",
                             {
                                 "border-sky-500 bg-gray-600": currentSorting === "ratingsAsc",
@@ -93,12 +95,18 @@ const BarList = () => {
                 </div>
             </div>
             <div className="flex flex-col items-center">
-                {sortedBars.slice(0, barsToDisplay).map(({ id, ...rest }) => (
-                    <BarItem key={id} {...rest} />
-                ))}
-                {numberOfBars > barsToDisplay &&
-                    <button onClick={displayMoreResults} className="bg-gray-600 px-4 py-2 rounded cursor-pointer hover:bg-sky-900 transition-all duration-300">Voir plus</button>
-                }
+                {errorState.status ?
+                    <div className="bg-red-500 text-white p-4 rounded text-sm mt-8 mx-8 text-center">{errorState.message}</div>
+                    : (
+                        <div className="w-full">
+                            {sortedBars.slice(0, barsToDisplay).map(({ id, ...rest }) => (
+                                <BarItem key={id} {...rest} />
+                            ))}
+                            {numberOfBars > barsToDisplay &&
+                                <button onClick={displayMoreResults} className="bg-gray-600 px-4 py-2 rounded cursor-pointer hover:bg-sky-900 transition-all duration-300">Voir plus</button>
+                            }
+                        </div>
+                    )}
             </div>
         </>
     )

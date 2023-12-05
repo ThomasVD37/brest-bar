@@ -7,14 +7,19 @@ import { createAppAsyncThunk } from '../../createAppAsyncThunk';
 // code can then be executed and other actions can be dispatched. Thunks are
 // typically used to make async requests.
 export const fetchBarApi = createAppAsyncThunk('data/fetch', async () => {
-    const response = await fetch('https://api.brest.bar/items/bars', {
-        method: 'GET',
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        }
-    })
-    const {data} = await response.json()
+    try {
+        const response = await fetch('https://api.brest.bar/items/bars', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }
+        })
+        const { data } = await response.json()
 
-    return data
+        return data
+    } catch (error) {
+        throw new Error("Une erreur est survenue lors de la récupération des données. Veuillez réessayer")
+    }
+    
 });

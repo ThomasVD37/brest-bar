@@ -9,6 +9,10 @@ const initialState: dataSliceState = {
     filter: 'none',
     sorting: 'none',
     currentBars: [],
+    error: {
+        message: '',
+        status: false,
+    },
 }
 
 export const dataSlice = createSlice({
@@ -28,9 +32,15 @@ export const dataSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
+            .addCase(fetchBarApi.rejected, (state, action) => {
+                state.error.message = action.error.message
+                state.error.status = true
+            })
             .addCase(fetchBarApi.fulfilled, (state, action) => {
                 state.bars = action.payload
                 state.currentBars = action.payload
+                state.error.message = ''
+                state.error.status = false
             })
     },
 })
@@ -62,4 +72,8 @@ export interface dataSliceState {
     filter: string,
     sorting: string,
     currentBars: object[],
+    error: {
+        message: string | undefined,
+        status: boolean,
+    },
 }

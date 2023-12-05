@@ -1,6 +1,6 @@
 import { selectFilter } from "@/lib/redux"
-import clsx from "clsx"
 import { useSelector } from "react-redux"
+import clsx from "clsx"
 
 const SortingHint = () => {
 
