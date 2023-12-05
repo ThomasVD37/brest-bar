@@ -1,4 +1,4 @@
-import { setCenter, setZoom } from "@/lib/redux";
+import { setCenter, setZoom } from "@/app/lib/redux";
 import { useDispatch } from "react-redux";
 
 /* icons */
@@ -16,6 +16,8 @@ const BarItem = ({ name, address, formatted_phone_number, website, rating, user_
     /* Get current day */
     const date = new Date();
     const day = date.getDay();
+    // Notre tableau de donnée démarre à 0 pour le lundi, donc on décrémente day de 1
+    // car getDay() renvoie 1 pour lundi, 2 pour mardi, etc...
     let currentDay = day - 1;
     if (currentDay === -1) {
         currentDay = 6;
@@ -30,15 +32,18 @@ const BarItem = ({ name, address, formatted_phone_number, website, rating, user_
         setViewHours(!viewHours);
     }
 
-    const handleZoom = (location: {coordinates: number[]}) => {
+    /* Au click sur un bar, on centre la map sur ce bar et on zoom dessus */
+    const handleZoom = (location: { coordinates: number[] }) => {
         dispatch(setCenter(location.coordinates));
         dispatch(setZoom([17]));
     }
 
     return (
-        <div className="bg-gray-700 rounded mb-4 p-4 flex justify-between items-center min-w-full">
-            <div className="w-2/3 mr-2">
+        <div className="bg-gray-700 rounded mb-4 p-4 flex sm:flex-row flex-col justify-between items-center min-w-full">
+            <div className="sm:w-2/3 w-full sm:mr-4 mr-0">
                 <h4 className="font-bold text-xl text-yellow-400 mb-2">{name}</h4>
+
+                {/* toggle des horaires si disponibles */}
                 {hours &&
                     <div className="bg-gray-600 rounded text-sm w-fit mb-3 cursor-pointer" onClick={handleHours}>
                         {!viewHours ?
@@ -58,10 +63,14 @@ const BarItem = ({ name, address, formatted_phone_number, website, rating, user_
                                         </li>
                                     ))}
                                 </ul>
-                                <FontAwesomeIcon icon={faXmark} className="text-lg ml-2"/>
+                                <FontAwesomeIcon icon={faXmark} className="text-lg ml-2" />
                             </div>
                         }
-                    </div>}
+                    </div>
+                }
+
+                {/* Telephone et site web si existants */}
+                
                 <div className="flex items-center text-base mb-2">
                     <FontAwesomeIcon icon={faSquarePhone} className="mr-2" />
                     {!(formatted_phone_number === "") ? <p>{formatted_phone_number}</p> : <p>Non renseigné</p>}
@@ -72,15 +81,19 @@ const BarItem = ({ name, address, formatted_phone_number, website, rating, user_
                     <p className="text-sky-400">{address}</p>
                 </div>
             </div>
-            <div>
-                <div className="flex items-baseline ">
-                    <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
-                    <p className="font-bold text-lg ">{rating}</p>
+
+            {/* notation et zoom sur la map */}
+            <div className="flex sm:gap-8 gap-16 items-center sm:mt-0 mt-4">
+                <div>
+                    <div className="flex items-baseline ">
+                        <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
+                        <p className="font-bold text-lg ">{rating}</p>
+                    </div>
+                    <p className="text-center">{user_ratings_total} avis</p>
                 </div>
-                <p>{user_ratings_total} avis</p>
-            </div>
-            <div className="w-12 h-12 rounded-full bg-sky-500 text-white flex justify-center items-center cursor-pointer" onClick={() => handleZoom(location)}>
-                <FontAwesomeIcon icon={faMagnifyingGlassLocation} className="text-2xl" />
+                <div className="w-12 h-12 rounded-full bg-sky-500 text-white flex justify-center items-center cursor-pointer" onClick={() => handleZoom(location)}>
+                    <FontAwesomeIcon icon={faMagnifyingGlassLocation} className="text-2xl" />
+                </div>
             </div>
         </div>
     );
@@ -99,5 +112,5 @@ type itemProps = {
     location: {
         coordinates: Array<number>
     },
-    opening_hours: string 
+    opening_hours: string
 }

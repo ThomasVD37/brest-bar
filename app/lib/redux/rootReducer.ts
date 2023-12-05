@@ -1,6 +1,7 @@
 /* Instruments */
-import { dataSlice } from './slices'
-import { mapSlice } from './slices'
+
+import { dataSlice } from "./slices/dataSlice";
+import { mapSlice } from "./slices/mapSlice";
 
 export const reducer = {
   data: dataSlice.reducer,

@@ -1,6 +1,6 @@
 'use client';
 
-import { fetchBarApi, useDispatch } from '@/lib/redux'
+import { fetchBarApi, useDispatch } from '@/app/lib/redux'
 import { useEffect } from 'react'
 
 

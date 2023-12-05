@@ -1,4 +1,6 @@
-export const filterBars = (bars, filter) => {
+import { barProps, filterType } from "../definitions";
+
+export const filterBars = (bars: barProps, filter: filterType) => {
     if (filter === 'adventure') {
         const result = bars.filter((bar) => bar.user_ratings_total <= 50)
         return result;

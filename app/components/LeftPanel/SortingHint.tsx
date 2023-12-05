@@ -1,4 +1,4 @@
-import { selectFilter } from "@/lib/redux"
+import { selectFilter } from "@/app/lib/redux"
 import { useSelector } from "react-redux"
 import clsx from "clsx"
 

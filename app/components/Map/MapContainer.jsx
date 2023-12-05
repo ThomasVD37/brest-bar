@@ -1,4 +1,4 @@
-import { selectcenter, selectzoom, setPopupInvisible } from '@/lib/redux';
+import { selectcenter, selectzoom, setPopupInvisible } from '@/app/lib/redux';
 import { useDispatch, useSelector } from 'react-redux';
 
 import ReactMapboxGl from 'react-mapbox-gl';

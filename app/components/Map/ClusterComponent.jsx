@@ -1,10 +1,13 @@
-import { isPopupVisible, selectCurrentBars, setPopupVisible } from "@/lib/redux";
+import { isPopupVisible, selectCurrentBars, setPopupVisible } from "@/app/lib/redux";
+import { useDispatch, useSelector } from "react-redux";
+
 import clsx from "clsx";
 import Image from "next/image";
-import { Cluster, Marker } from "react-mapbox-gl";
-import { useDispatch, useSelector } from "react-redux";
-import MarkerPopup from "./MarkerPopup";
+
 import { useState } from "react";
+
+import { Cluster, Marker } from "react-mapbox-gl";
+import MarkerPopup from "./MarkerPopup";
 
 const ClusterComponent = () => {
 

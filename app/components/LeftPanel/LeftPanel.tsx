@@ -11,9 +11,6 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 const LeftPanel = () => {
 
-    //TODO : Rework hidePanel feature to make it cleaner
-    //TODO : refactor general code and comment
-
     const [panelStatus, setPanelStatus] = useState(false);
 
     const handleclick = () => {
@@ -22,7 +19,7 @@ const LeftPanel = () => {
 
     return (
         <section className={clsx(
-            "bg-gray-800 xl:w-1/3 lg:w-1/2 md:w-2/3 sm:w-4/5 w-[90%] flex-1 text-white min-h-full overflow-y-scroll scrollbar-thin scrollbar-thumb-sky-500 scrollbar-track-gray-700 transition-all relative z-10",
+            "bg-gray-800 2xl:w-1/3 xl:w-2/5 lg:w-1/2 md:w-2/3 sm:w-4/5 w-[90%] flex-1 text-white min-h-full overflow-y-scroll scrollbar-thin scrollbar-thumb-sky-500 scrollbar-track-gray-700 transition-all relative z-10",
             {
                 "-translate-x-[90%]": panelStatus,
             })}
@@ -35,7 +32,7 @@ const LeftPanel = () => {
             } icon={faChevronLeft} /></button>
             <div className={clsx("divide-y-2 divide-gray-700", { "hidden": panelStatus })}>
                 <div className="flex px-4 pb-4">
-                    <h2 className="font-bold text-2xl xl:text-3xl sm:mr-12 mr-8">Trouver le bar qu&#39;il vous faut <span className="text-sky-500">selon votre humeur</span></h2>
+                    <h2 className="font-bold text-xl xl:text-3xl sm:text-2xl sm:mr-12 mr-8">Trouver le bar qu&#39;il vous faut <span className="text-sky-500">selon votre humeur</span></h2>
 
                 </div>
                 <div className="p-4">

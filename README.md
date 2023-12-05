@@ -13,10 +13,11 @@ Petit projet réalisé dans le cadre d’une offre d’emploi.
 
     > En outre, le package n'étant pas mis a jour depuis plus de 3 ans, il y a de nombreux warnings. Il aurait été judicieux de se pencher sur la librairie open-source **Leaflet JS** qui est maintenue et dispose d'un package pour les types.
 
-## Les evolutions à venir très prochainement
+## Les evolutions
 
-- Amélioration du design et du responsive + refacto & cleanup
 - Hebergement sur un autre nom de domaine
+- ~~Amélioration du design et du responsive~~
+- ~~Refacto & cleanup~~
 - ~~Gestion des erreurs~~
 - ~~Support de TypeScript~~
 - ~~Ajout des filtres et des horaires en toggle avec highlight du current day~~

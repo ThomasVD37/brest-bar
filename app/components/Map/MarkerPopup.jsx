@@ -1,4 +1,4 @@
-import { setPopupInvisible } from "@/lib/redux";
+import { setPopupInvisible } from "@/app/lib/redux";
 import { useDispatch } from "react-redux";
 
 import { Popup } from "react-mapbox-gl";
@@ -25,18 +25,21 @@ const MarkerPopup = ({ attributes }) => {
             coordinates={attributes.location.coordinates}
             anchor="bottom"
             offset={20}
-            onClick={handleClick}>
+            onClick={handleClick}
+        >
             <div className="text-white">
                 <div className="flex justify-between align-top">
                     <h3 className="text-yellow-400 font-bold text-base max-w-[200px]">{attributes.name}</h3>
                     <FontAwesomeIcon icon={faXmark} className="font-bold text-base cursor-pointer m-1" />
                 </div>
                 <p className="text-sky-500 font-xs">{attributes.address}</p>
-                {hours ?
+                {hours ? (
                     <ul className="list-disc pl-3">{Object.values(JSON.parse(attributes.opening_hours)).map((day) => (
                         <li key={day}>{day}</li>
-                    ))}</ul> : <p>Horaires non renseignés</p>
-                }
+                    ))}</ul>
+                ) : (
+                    <p>Horaires non renseignés</p>
+                )}
             </div>
         </Popup>
     )

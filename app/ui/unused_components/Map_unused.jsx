@@ -4,7 +4,7 @@
 
 // const Map = () => {
 
-//     mapboxgl.accessToken = "pk.eyJ1IjoidGhvbWFzdmQzNyIsImEiOiJjbHBobzlpc3UwYWR5MmxsZm5va3htdng1In0.9Vrc8cYScA-BTzDMm2TvNg";
+//     mapboxgl.accessToken = "";
 
 //     const mapContainer = useRef(null);
 //     const map = useRef(null);

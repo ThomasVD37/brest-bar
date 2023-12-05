@@ -1,6 +1,6 @@
 import { Montserrat } from 'next/font/google'
 import './globals.css'
-import { Providers } from '@/lib/providers'
+import { Providers } from '@/app/lib/providers'
 import React from 'react'
 
 const montserrat = Montserrat({ subsets: ['latin'] })

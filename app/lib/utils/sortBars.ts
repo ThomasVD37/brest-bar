@@ -1,4 +1,6 @@
-export const sortBars = (bars, sorting) => {
+import { barProps, filterType } from "../definitions";
+
+export const sortBars = (bars: barProps, sorting: filterType) => {
     let sortedBars = [...bars];
 
     switch (sorting) {

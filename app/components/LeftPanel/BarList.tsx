@@ -1,11 +1,13 @@
-import { selectCurrentBars, selectError, selectFilter, selectSorting, setSorting } from "@/lib/redux";
+import { selectCurrentBars, selectError, selectFilter, selectSorting, setSorting } from "@/app/lib/redux";
 import { useDispatch, useSelector } from "react-redux";
-
 import { useState } from "react";
 
+import { sortingType } from "@/app/lib/definitions";
+
+/* components */
 import BarItem from "./BarItem";
 
-import { sortBars } from "@/lib/utils/sortBars";
+import { sortBars } from "@/app/lib/utils/sortBars";
 import clsx from "clsx";
 
 /* icons */
@@ -15,13 +17,14 @@ import { faDownLong, faPen, faStar, faUpLong } from "@fortawesome/free-solid-svg
 
 const BarList = () => {
 
+    /* selectors */
     const bars = useSelector(selectCurrentBars);
     const currentFilter = useSelector(selectFilter);
     const currentSorting = useSelector(selectSorting);
+    const errorState = useSelector(selectError)
     const dispatch = useDispatch();
 
-    const errorState = useSelector(selectError)
-
+    /* Gestion du bouton "voir plus" */
     const numberOfBars = bars.length;
     const [barsToDisplay, setBarsToDisplay] = useState(5);
     const [resetFilter, setResetFilter] = useState(currentFilter);
@@ -37,7 +40,9 @@ const BarList = () => {
         }
     }
 
-    const handleSort = (sort: string) => {
+    /* Gestion du tri utilisateur ascendant ou descendant*/
+
+    const handleSort = (sort: sortingType) => {
         if (sort === currentSorting) {
             dispatch(setSorting('none'));
         } else {
@@ -49,9 +54,12 @@ const BarList = () => {
 
     return (
         <>
-            <div className="flex justify-between pb-4 items-center">
-                <h3 className="text-white font-bold text-lg">Explorer</h3>
-                <div className="flex gap-2">
+            <div className="flex sm:flex-row flex-col justify-between pb-4 items-center">
+                <h3 className="text-white font-bold text-lg pb-2 sm:pb-0">Explorer</h3>
+
+                {/* Pictos pour tri utilisateur */}
+
+                <nav className="flex gap-2">
                     <div onClick={() => handleSort("ratingsAsc")}
                         className={clsx("p-2 rounded flex items-center gap-2 border-2 hover:bg-sky-900 transition-all duration-300 cursor-pointer",
                             {
@@ -92,13 +100,16 @@ const BarList = () => {
                         <FontAwesomeIcon icon={faDownLong} />
                         <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
                     </div>
-                </div>
+                </nav>
             </div>
-            <div className="flex flex-col items-center">
+
+            {/* Liste des bars ou erreur le cas échéant */}
+
+            <div>
                 {errorState.status ?
                     <div className="bg-red-500 text-white p-4 rounded text-sm mt-8 mx-8 text-center">{errorState.message}</div>
                     : (
-                        <div className="w-full">
+                        <div className="w-full flex flex-col items-center">
                             {sortedBars.slice(0, barsToDisplay).map(({ id, ...rest }) => (
                                 <BarItem key={id} {...rest} />
                             ))}
