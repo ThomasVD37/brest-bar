@@ -1,12 +1,17 @@
 import { selectCurrentBars, selectFilter, selectSorting, setSorting } from "@/lib/redux";
 import { useDispatch, useSelector } from "react-redux";
+
 import { useState } from "react";
 
 import BarItem from "./BarItem";
+
 import { sortBars } from "@/lib/utils/sortBars";
+import clsx from "clsx";
+
+/* icons */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownLong, faPen, faStar, faUpLong } from "@fortawesome/free-solid-svg-icons";
-import clsx from "clsx";
+
 
 const BarList = () => {
 
@@ -30,7 +35,7 @@ const BarList = () => {
         }
     }
 
-    const handleSort = (sort) => {
+    const handleSort = (sort: string) => {
         if (sort === currentSorting) {
             dispatch(setSorting('none'));
         } else {

@@ -1,9 +1,9 @@
 'use client';
 
-import { fetchBarApi } from '@/lib/redux'
-import Image from 'next/image'
+import { fetchBarApi, useDispatch } from '@/lib/redux'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+
+
 import Header from './components/Header/Header';
 import LeftPanel from './components/LeftPanel/LeftPanel';
 import MapContainer from './components/Map/MapContainer';

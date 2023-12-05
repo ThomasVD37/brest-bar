@@ -1,14 +1,14 @@
 import { setCenter, setZoom } from "@/lib/redux";
-import { faArrowUpRightFromSquare, faChevronLeft, faLocationDot, faMagnifyingGlassLocation, faSquarePhone, faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import clsx from "clsx";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-const BarItem = ({ name, address, formatted_phone_number, website, rating, user_ratings_total, location, opening_hours }) => {
+/* icons */
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare, faChevronLeft, faLocationDot, faMagnifyingGlassLocation, faSquarePhone, faStar, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-    //TODO : Add dropdown to view complete opening hours with highlight on current day
-    // Eventuellement les categories pour apporter de la couleur
+import clsx from "clsx";
+import { useState } from "react";
+
+const BarItem = ({ name, address, formatted_phone_number, website, rating, user_ratings_total, location, opening_hours }: itemProps) => {
 
     const dispatch = useDispatch();
     const [viewHours, setViewHours] = useState(false);
@@ -30,7 +30,7 @@ const BarItem = ({ name, address, formatted_phone_number, website, rating, user_
         setViewHours(!viewHours);
     }
 
-    const handleZoom = (location) => {
+    const handleZoom = (location: {coordinates: number[]}) => {
         dispatch(setCenter(location.coordinates));
         dispatch(setZoom([17]));
     }
@@ -48,9 +48,16 @@ const BarItem = ({ name, address, formatted_phone_number, website, rating, user_
                             </div>
                             :
                             <div className="flex py-2 pl-6 pr-2">
-                                <ul className="list-disc">{Object.entries(JSON.parse(opening_hours)).map((day) => (
-                                    <li className={clsx("", { "text-sky-400": Number(day[0]) === currentDay })} key={day[0]}>{day[1]}</li>
-                                ))}</ul>
+                                <ul className="list-disc">
+                                    {Object.entries(JSON.parse(opening_hours) as Record<string, string>).map((day) => (
+                                        <li
+                                            className={clsx("", { "text-sky-400": Number(day[0]) === currentDay })}
+                                            key={day[0]}
+                                        >
+                                            {day[1]}
+                                        </li>
+                                    ))}
+                                </ul>
                                 <FontAwesomeIcon icon={faXmark} className="text-lg ml-2"/>
                             </div>
                         }
@@ -80,3 +87,17 @@ const BarItem = ({ name, address, formatted_phone_number, website, rating, user_
 };
 
 export default BarItem;
+
+/* Types */
+type itemProps = {
+    name: string,
+    address: string,
+    formatted_phone_number: string,
+    website: string,
+    rating: number,
+    user_ratings_total: number,
+    location: {
+        coordinates: Array<number>
+    },
+    opening_hours: string 
+}

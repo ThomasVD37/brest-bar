@@ -1,7 +1,7 @@
 /* Core */
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {
+const initialState: mapSliceState = {
     map_zoom: [12],
     map_center: [-4.54, 48.40],
     popupVisible: false,
@@ -27,3 +27,10 @@ export const mapSlice = createSlice({
 })
 
 export const { setCenter, setZoom, setPopupInvisible, setPopupVisible } = mapSlice.actions
+
+/* Types */
+export interface mapSliceState {
+    map_zoom: number[],
+    map_center: number[],
+    popupVisible: boolean,
+}

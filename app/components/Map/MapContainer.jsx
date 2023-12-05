@@ -1,6 +1,7 @@
-import { selectCurrentBars, selectcenter, selectzoom, setPopupInvisible } from '@/lib/redux';
-import ReactMapboxGl, { Marker, Cluster } from 'react-mapbox-gl';
+import { selectcenter, selectzoom, setPopupInvisible } from '@/lib/redux';
 import { useDispatch, useSelector } from 'react-redux';
+
+import ReactMapboxGl from 'react-mapbox-gl';
 
 import ClusterComponent from './ClusterComponent';
 
@@ -10,8 +11,6 @@ const MapContainer = () => {
 
     // Moved "zoom" and "center" to redux store to make possible the click on a bar in the list and zoom on it.
     // This create a re-render when zooming. No solution found yet.
-
-    // Fonction onclick dans le marker qui appelle un composant Popup sur ses coordonnées
 
     const zoom = useSelector(selectzoom);
     const center = useSelector(selectcenter)

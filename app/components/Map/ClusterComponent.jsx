@@ -40,12 +40,12 @@ const ClusterComponent = () => {
                         <Marker
                             key={bar.place_id}
                             coordinates={bar.location.coordinates} >
-                            <Image src="/blue-dot.png" width={12} height={12} alt="Marker" onClick={() => showPopup(bar)} className="cursor-pointer"/>
+                            <Image src="/blue-dot.png" width={12} height={12} alt="Marker" onClick={() => showPopup(bar)} className="cursor-pointer" />
                         </Marker>
                     )
                 }
             </Cluster>
-            {popupVisible && <MarkerPopup attributes={popupAttributes}/>}
+            {popupVisible && <MarkerPopup attributes={popupAttributes} />}
         </>
     )
 }

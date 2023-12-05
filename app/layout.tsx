@@ -1,6 +1,7 @@
 import { Montserrat } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/lib/providers'
+import React from 'react'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -9,7 +10,7 @@ export const metadata = {
     description: 'Votre guide des bars à Brest',
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode}) {
     return (
         <Providers>
             <html lang="fr">

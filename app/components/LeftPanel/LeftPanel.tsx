@@ -1,10 +1,13 @@
 import { useState } from "react";
+
 import BarList from "./BarList";
 import UserSorting from "./UserSorting";
+import SortingHint from "./SortingHint";
+
 import clsx from "clsx";
+/* icons */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import SortingHint from "./SortingHint";
 
 const LeftPanel = () => {
 

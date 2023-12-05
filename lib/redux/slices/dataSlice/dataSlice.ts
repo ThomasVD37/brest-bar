@@ -4,8 +4,8 @@ import { createSlice } from '@reduxjs/toolkit'
 /* Instruments */
 import { fetchBarApi } from './thunks'
 
-const initialState = {
-    bars: [],
+const initialState: dataSliceState = {
+    bars: [{}],
     filter: 'none',
     sorting: 'none',
     currentBars: [],
@@ -28,11 +28,7 @@ export const dataSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
-            .addCase(fetchBarApi.pending, (state) => {
-                state.status = 'loading'
-            })
             .addCase(fetchBarApi.fulfilled, (state, action) => {
-                state.status = 'done'
                 state.bars = action.payload
                 state.currentBars = action.payload
             })
@@ -40,3 +36,30 @@ export const dataSlice = createSlice({
 })
 
 export const { setFilter, setCurrentBars, setSorting } = dataSlice.actions
+
+/* Types */
+export interface dataSliceState {
+    bars: [
+        {
+            id?: number,
+            name?: string,
+            location?: {
+                type: string,
+                coordinates: [number, number]
+            },
+            place_id?: string,
+            rating?: number,
+            address?: string,
+            status?: string,
+            formatted_phone_number?: string,
+            international_phone_number?: string,
+            maps_url?: string,
+            user_ratings_total?: number,
+            opening_hours?: string,
+            website?: string,
+        }
+    ],
+    filter: string,
+    sorting: string,
+    currentBars: object[],
+}
